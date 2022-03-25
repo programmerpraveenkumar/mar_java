@@ -1,0 +1,56 @@
+Variable:
+	to store the value .
+	defined with data type(number,string,date,boolean,decimal,byte).
+
+
+
+
+Object cannot be created for primitive data types:
+Primitive Data types In java:
+	byte->binary data.(images or any files.)
+	short -32768 to 32768
+
+	whole numbers:
+	int ==> -2crore to 2 crore
+	long
+
+	decimal Numbers:
+	float=> upto 7decimal digits
+	double=> upto 16 decimal digits
+
+	boolean=>true or false
+
+	char=> 'a'
+
+
+Object can be created and all object props can be applied
+Wrapper classes:
+    Byte
+    Short
+    Integer
+    Long
+    Float
+    Double
+    Boolean
+    Char
+
+String => java class to store the string datatype.value can be declared with double quotes.
+
+
+Object Creation in java:
+    1.object can be created in java classes.
+    2.Muliple objects can be create for a java classes.
+    3.Mulitple objects will work independently.
+    4.using object can access variable and other props(methods).
+    5.object can be created from one class in another.
+
+   //syntax for obj createion in java
+classname obj  = new classname();
+
+
+If condition=>when condition becmes trues.this will execute
+If,else condition>when condition is true if will execute..when condition is false else will execute.
+If,elseif,else
+For loop
+While
+Switch case
