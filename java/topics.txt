@@ -54,3 +54,39 @@ If,elseif,else
 For loop
 While
 Switch case
+
+
+Declare the methods
+
+5+5=>10
+10+5=>15
+
+
+x+y=>res
+
+
+//method without return
+public void name_of_function(){
+
+}
+
+//method with return
+public int add(){
+	int res = 5+5;
+	return res;
+}
+method overloading->same method with different params.
+static method
+    variables or methods can be declared as static.
+
+static method or varibles->based on classname
+non-static or non-static variables->based on objects.
+
+
+
+public static void main
+
+Public->access specifier .can access from anywhere in the application.
+Static->no need to create object.using classname can access.
+Void-> no return type.
+main-> common method name between jdk and java program
