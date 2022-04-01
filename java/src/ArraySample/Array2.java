@@ -16,5 +16,17 @@ public class Array2 {
         String [] nameList = {"test","test1","test2"};
         System.out.println(nameList[0]);
         System.out.println(nameList[1]);
+      //  System.out.println(nameList[15]);//error will Create as Array Index Out Of BoundsException..
+
+        System.out.println("Total length of the array is "+ageArray.length);
+        System.out.println("---for loop iteration----");
+        //iteration of the array.
+        for(String name : nameList){
+            System.out.println(name);
+        }
+        System.out.println("---for loop iteration2----");
+        for(int start = 2;start< nameList.length;start++){
+            System.out.println(nameList[start]);
+        }
     }
 }

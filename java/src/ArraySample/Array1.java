@@ -13,6 +13,23 @@ public class Array1 {
         System.out.println(ageArray[0]);//print the 0th pos
         System.out.println(ageArray[1]);//print the 1st pos
         System.out.println(ageArray[2]);//print the 2nd pos
-        System.out.println(ageArray[3]);//print the 2nd pos
+        System.out.println(ageArray[3]);//print the 3rd pos
+
+        /*
+            syntax for arrayiteration
+            for(Array_datatype variablename : arrayaname){
+
+            }
+         */
+        System.out.println("Total length of the array is "+ageArray.length);
+        System.out.println("---for loop iteration----");
+        //iteration of the array.
+        for(int age : ageArray){
+            System.out.println(age);
+        }
+        System.out.println("---for loop iteration2----");
+        for(int start = 0;start< ageArray.length;start++){
+            System.out.println(ageArray[start]);
+        }
     }
 }

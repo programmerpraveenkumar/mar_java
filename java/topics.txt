@@ -90,3 +90,47 @@ Public->access specifier .can access from anywhere in the application.
 Static->no need to create object.using classname can access.
 Void-> no return type.
 main-> common method name between jdk and java program
+
+oops:
+Object oriented programming
+inheritance
+    inherit the props from one class to another(parent class to child).
+    all the variables and methods will be available in the child class.
+    java does not allow multiple inheritance.one child can have ony one parent.
+    multi level  inheritance can be allowed.
+
+abstract class
+    1.A class which is declared with abstract keyword,is considered as abstract class.
+    2.for Abstract class object cannot be created.
+    3.so abstract classes can be used only in inheritance.
+    4.if any methods declare as abstract.tht method has to be override in the child class.
+
+
+interface
+    1.A class which is declared with interface keyword,is considered as interface.
+    2.for interface object cannot be created.
+    3.so interface can be used only in inheritance.using keyword called implements.
+    4.interface should not have any method definition.So only method declaration can be allowd.
+    5.So all methods have to be declared in the child class.
+    6.
+
+Encapsulation
+
+Constructor:
+        method name same as classname
+        will call while creating the object.
+        no need to call explicitly
+        assign the values for the variable while creating object using args.
+        load the configuration details while creating the object.
+            Ex:Database connection,Logger library.
+        Constructor is optional.
+
+ Exception Management:
+    1.whenever there is an error.it will not stop the app.it will run the app.
+    2.using the syntax;
+        try{
+            //error code
+        }catch(Exception_clasanem obj){
+            //print the error if needed.
+        }
+    3.trying to connect with external files(read or write) or server,database connections,sending response
