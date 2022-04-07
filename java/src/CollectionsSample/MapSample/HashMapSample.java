@@ -18,10 +18,33 @@ public class HashMapSample {
         System.out.println(obj.get("email"));//print the value of the key
         System.out.println(obj.get("address"));//print the value of the key
 
-        System.out.println("hashmap iteration..");
+        System.out.println("-----hashmap iteration---..");
         //iterate with the values.
         for(String o :obj.values()){
             System.out.println(o);
         }
+
+        System.out.println("-----hashmap iteration with key---..");
+        //iterate with the keys.
+        for(String key:obj.keySet()){
+            System.out.println(key+" -- "+obj.get(key));//using the key,access the values.
+        }
+
+        System.out.println("iteration with lambda expression---.");
+
+        //lambda expression with key and value
+        obj.forEach((key,value)->{
+            System.out.println(key+" "+value);
+        });
+
+        //lambda expression with values
+        obj.values().forEach(o->{
+            System.out.println(o);
+        });
+
+        //lambda expression with keys
+        obj.keySet().forEach(o->{
+            System.out.println(o);
+        });
     }
 }

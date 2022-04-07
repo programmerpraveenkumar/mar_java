@@ -16,8 +16,14 @@ public class TreeMapSample {
         obj.put("email","sample@gmail.com");//add the values to the hashmap.
         obj.put("mobile","546464");//add the values to the hashmap.s
         obj.put("address","sample address");//add the values to the hashmap.s
+        obj.put(null,"test");//null pointer exception.
         System.out.println(obj);//print all the values of the hashmap.
         System.out.println(obj.get("email"));//print the value of the key
         System.out.println(obj.get("address"));//print the value of the key
+
+        System.out.println("-----hashmap iteration with key---..");
+        for(String key:obj.keySet()){
+            System.out.println(key+" -- "+obj.get(key));//using the key,access the values.
+        }
     }
 }
