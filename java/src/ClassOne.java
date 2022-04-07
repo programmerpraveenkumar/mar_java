@@ -10,5 +10,7 @@ public class ClassOne {
         classtwo1.isChild = true;
         System.out.println(classtwo1.age);//access the variable using object
         System.out.println(classtwo1.isChild);
+        int res = classtwo1.add(10,15);
+        System.out.println(res);
     }
 }

@@ -134,3 +134,55 @@ Constructor:
             //print the error if needed.
         }
     3.trying to connect with external files(read or write) or server,database connections,sending response
+
+
+    throw->to return the error
+    throws->to declare the method as it may return the error.
+    throwable->Parent class for Exception classes.
+
+
+Array
+	store the multiple values in one variable .
+	dynamic  values cannot be added.
+
+Collections
+	store the multiple values in one variable .
+	dynamic  values can be added.
+	Wrapper classes or objects will be use for all the data type.
+	cannot use primitive data type.
+	datatype should be mention in the diamond operator. <>
+	All colletions Generics.
+
+List->arrayList,Vector,LinkedList
+Set->HashSet,TreeSet,LinkedHashSet->it should not allow for duplicates.
+Stack and queue
+
+Map->HashMap,TreeMap,LinkedHashMap
+    1.key and values should be provide.
+    2.key should be unique.otherwise value will be override.
+
+
+
+
+
+
+Primitive data type:
+int,float,char,boolean,long,double.
+
+Wrapper classes:
+	Integer
+	Float
+	Char
+	Boolean
+	Long
+	Double
+
+
+ArrayList,Vector,LinkedList -> implementation will be same.Internal architecture will be different.
+
+Comparator->will be useful to sort in pojo class
+
+
+
+iterator
+TreeList->descding iterator
