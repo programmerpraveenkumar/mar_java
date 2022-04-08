@@ -22,6 +22,7 @@ public class HashMapSample {
         //iterate with the values.
         for(String o :obj.values()){
             System.out.println(o);
+
         }
 
         System.out.println("-----hashmap iteration with key---..");

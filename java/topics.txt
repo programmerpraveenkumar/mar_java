@@ -163,9 +163,6 @@ Map->HashMap,TreeMap,LinkedHashMap
 
 
 
-
-
-
 Primitive data type:
 int,float,char,boolean,long,double.
 
