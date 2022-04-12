@@ -33,6 +33,7 @@ public class People implements Comparable<People> {
 
     @Override
     public int compareTo(People o) {
-        return Integer.compare(this.getId(),o.getId());
+        return Integer.compare(this.getId(),o.getId());//integer compare
+        //return this.name.compareTo(o.name);//for string compare
     }
 }

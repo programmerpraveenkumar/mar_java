@@ -30,6 +30,13 @@ public class HashMapArrayistPojo {
         System.out.println(obj);
         System.out.println(obj.get("first_element1").get(1));//access  the arraylist using hashmap
         System.out.println("----lambda expression iteration----");
+       /*
+        for(HApojo o :itr.values()){
+            System.out.println(o.getMethod());
+        }
+
+        */
+
         //lambda expression for hashamp
         obj.forEach((key,values)->{
             System.out.println(values);

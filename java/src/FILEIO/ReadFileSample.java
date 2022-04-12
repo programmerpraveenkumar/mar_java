@@ -18,7 +18,7 @@ public class ReadFileSample {
             file = new File("test2.txt");
             System.out.println("read..?"+file.canRead());
             System.out.println("write..?"+file.canWrite());
-            if(file.exists()){
+            if(file.exists()){//to check the whether the file is exst or not  in the location.
                 input = new FileInputStream(file);
 
                 //System.out.println((char)input.read());//read the data and convert bytes to string.
