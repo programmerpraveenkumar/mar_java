@@ -183,3 +183,11 @@ Comparator->will be useful to sort in pojo class
 
 iterator
 TreeList->descding iterator
+
+
+
+Thread:
+
+1.Using parent class Thread.(using inheritance)
+2.using interface Runnable .(using implements)
+        java does not support multiple inheritance.so then need to implement the Runnable thread.
