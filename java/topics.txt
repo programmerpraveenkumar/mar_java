@@ -191,3 +191,103 @@ Thread:
 1.Using parent class Thread.(using inheritance)
 2.using interface Runnable .(using implements)
         java does not support multiple inheritance.so then need to implement the Runnable thread.
+
+
+Executors.newSingleThreadExecutor()->only one thread can execute.
+Executors.newFixedThreadPool(count)->based on the count thread can execute.
+Executors.newCachedThreadPool()->processor count managed by jdk and it executes.
+invokeAny
+invokeAll
+submit
+
+
+
+StringBuffer
+StringBuilder
+
+
+
+Mysql database
+	multiple tables
+	each table will have row and col.
+
+
+CRUD->create,read,update,delete
+
+insert:
+Insert into table_name(col_name1,col_name2)values(val1,val2.)
+insert into customer(name, email,mobile,address,city,dob)values('testname','testemail@gmail.com','455446','sample address','sample city','1995-05-23')
+
+Read:
+	reading the data.
+	select * from table_name
+	select * from customer;
+
+Update:
+Updating the record
+	update table_name set col_Name= 'value',col_name2 ='val2' where id= 2;
+	update customer set name= 'update name' where id = 1
+
+Delete:
+delete from table_name where colname=colval;
+delete from customer where customer_no =2;
+
+Keys
+	primary key->multiple column can be added together for creating key
+	unique key->only one col can be allowed for unique key.
+
+
+
+Mobile(PK)
+email(PK)
+
+464654 test@gmail.com -->ok
+564654 test@gmail.com -->ok
+564654 test1@gmail.com -->ok
+464654 test@gmail.com -->fail
+
+
+Mobile(UK)
+email(UK)
+464654 test@gmail.com -->ok
+564654 test@gmail.com -->fail
+564654 test1@gmail.com -->failu
+464654 test@gmail.com -->fail
+
+
+
+
+Async();->spring Boot
+
+1.Download the eclipse eeversion
+2.Download the tomcat server version.
+3.connect the. Eclipse with tomcat server using sever configuration(click window->server in eclipse)
+
+
+
+What's servlet.
+1.Any java server does not run the java apps directly.
+2.So we need a framework in server
+	Ex servlet framework:.servlet,spring,struts
+
+Advantages:
+1.Servlet is java sever framework. in Order to run the java app in server.
+2.servlet can run in tomcat,jboss,websphere( servers)
+3.servlet will help us to process the http request and response.
+
+
+Create a java servlet
+    Eclipse->file->New -> Dynamic web project->enter the projcet name.->finish
+            Note:check tomcat and version is selected.
+
+
+Run the apps:
+right click the on the project->run as -> run on server.
+
+APP URL:
+http://localhost/{appname}
+http://localhost/apr_servlet_mor/
+
+Http Methods:
+    GET-> to get the data to server.
+    POST->to post the data to server
