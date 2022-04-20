@@ -1,0 +1,54 @@
+https://start.spring.io/ -> to create the spring boot app
+
+Controller
+	receive the request from the client and send back with response.it will call service if necessary 
+
+Service
+	Business layer will help to add the logic and bridge between controller and repo.
+
+
+Model & Repo(DAO)
+	ORM->Object relation mapping(each table will have one pojo class with db fields)
+	Repo->to run the DB queries(CRUD)
+
+
+Java annotations will help us add logics the methods.
+    in spring boot,it has predefined annotations will help us add logics to the methods.
+
+
+Controller:
+  @RestController
+            should be on top of the class
+            will send the response as text data or json data.
+  @Controller->
+              should be on top of the class
+              will send the response as html page.
+  @RequestParam
+            to recv the http params.
+  @GetMapping->should be on top of the method
+  @PostMapping->should be on top of the method
+  @PutMapping->should be on top of the method
+  @PatchMapping->should be on top of the method
+  @DeleteMapping->should be on top of the method
+  @RequestMapping->can be on top of the method or class
+  @ResponseEntity->Method return type only in controller.
+
+Service:
+  @Service
+    should be on top of the class
+
+
+Model:
+  @Entity->on top of the class
+  @Table(name="Db_table_name")->on top of the class
+
+  @id->PK field(mandatory)->->on top of the field
+
+
+Repo:
+    @Repository->on the top of the interface.
+
+
+
+@Autowired
+ will inject necessary  dependency between the layers.

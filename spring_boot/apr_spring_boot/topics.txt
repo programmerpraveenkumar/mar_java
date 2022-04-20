@@ -289,8 +289,11 @@ http://localhost/{appname}
 http://localhost/apr_servlet_mor/
 
 Http Methods:
-    GET-> to get the data to server.
-    POST->to post the data to server
+    GET-> to get the data to server.data wch  will be sent to server visible in the url
+
+    POST->  to post the data to server.data wch will  be sent to server will not visible in the url
+            will be useful for send the confidential data(username,password,otp)
+            file or images upload,large data can be sent via post method.
 
     Servlet:
     	Framework java Apps to run in server.
@@ -313,7 +316,20 @@ Http Methods:
     	DI ,ORM (object for the database)  is  predefined in spring boot.
     	Authentication,autherization (token validation ) will be predefined.
     	annotations will help to implement.
+    	It has embedded tomcat server.
 
 
 
 https://start.spring.io/ -> to create the spring boot app
+
+Controller
+	receive the request from the client and send back with response.it will call service if necessary 
+
+Service
+	Business layer will help to add the logic and bridge between controller and repo.
+
+
+Model & Repo(DAO)
+	ORM->Object relation mapping(each table will have one pojo class with db fields)
+	Repo->to run the DB queries(CRUD)
+
