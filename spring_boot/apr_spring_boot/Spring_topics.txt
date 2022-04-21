@@ -23,8 +23,15 @@ Controller:
   @Controller->
               should be on top of the class
               will send the response as html page.
+
+
   @RequestParam
-            to recv the http params.
+            to recv the http params.(can be used in file upload or image upload)
+  @PathVariable
+    to recv the data in the url itself
+  @RequestBody
+        to send the data in request body of the http request.
+
   @GetMapping->should be on top of the method
   @PostMapping->should be on top of the method
   @PutMapping->should be on top of the method
@@ -46,9 +53,14 @@ Model:
 
 
 Repo:
-    @Repository->on the top of the interface.
+    @Repository->on the top of the interface.It should extends with JPARepo.
 
 
 
 @Autowired
  will inject necessary  dependency between the layers.
+
+
+ for JPA and mysql connection,need to add two dependencies
+    1.mysql driver
+    2.jpa repo.
