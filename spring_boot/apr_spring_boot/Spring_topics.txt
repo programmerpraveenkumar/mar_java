@@ -1,5 +1,15 @@
 https://start.spring.io/ -> to create the spring boot app
 
+http status code:
+
+    200 to 299->success status code
+    400 to 499 -> failure.due to internal server error
+    500 to 599 -> failure.due to error in client request
+
+
+    200->success status code
+    404->Page Not found
+
 Controller
 	receive the request from the client and send back with response.it will call service if necessary 
 
@@ -64,3 +74,17 @@ Repo:
  for JPA and mysql connection,need to add two dependencies
     1.mysql driver
     2.jpa repo.
+
+
+
+Create a controller and register
+		1.create customer controller and register
+		2.CustomerReq to recv the args  from the postman
+Create a customer service.
+	storeUser with args of CustomerReq
+
+Create a CustomerRepo and Customermodel
+
+Inject the CustomerRepo in customerservice.
+Inject the customerservice in customer controller
+

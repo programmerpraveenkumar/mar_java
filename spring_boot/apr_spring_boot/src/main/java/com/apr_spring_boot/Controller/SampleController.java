@@ -82,6 +82,13 @@ public class SampleController {
         res.setStatusCode("100");
         return ResponseEntity.ok(res);//sending the pojo  class as the respnose
     }
+    @GetMapping("error_status_code")
+    public ResponseEntity<?> error_status_code(){
+        SampleRes res = new SampleRes();
+        res.setMessage("sample message for the response");
+        //ResponseEntity.ok(res) -> success reponse.
+        return ResponseEntity.badRequest().body(res);//error status code.failure response
+    }
 
     @GetMapping("getcity")
     public ResponseEntity<?> getCity(){
