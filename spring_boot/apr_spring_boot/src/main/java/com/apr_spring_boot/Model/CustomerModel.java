@@ -2,6 +2,7 @@ package com.apr_spring_boot.Model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="customer")
@@ -9,10 +10,50 @@ public class CustomerModel {
     @Id//should be on top of PK
     @GeneratedValue(strategy= GenerationType.IDENTITY)//indicate this field is Auto increment
     Integer customer_no;
-    String name,email,mobile,address,city,dob,password;
+    String name;
+    String email;
+    String address;
+    String dob;
+    String password;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    String token;
+
+    @OneToOne
+    @JoinColumn(name="city")
+    CityModel cityModel;
+
+    public List<MobileModel> getMobileModel() {
+        return mobileModel;
+    }
+
+    public void setMobileModel(List<MobileModel> mobileModel) {
+        this.mobileModel = mobileModel;
+    }
+
+    @OneToMany
+    @JoinColumn(name="customer_id")
+    List<MobileModel> mobileModel;//multiple data may exist.so list
 
     @Column(updatable = false,insertable = false)
     LocalDate added_date;
+
+
+    public CityModel getCityModel() {
+        return cityModel;
+    }
+
+    public void setCityModel(CityModel cityModel) {
+        this.cityModel = cityModel;
+    }
+
 
     public LocalDate getAdded_date() {
         return added_date;
@@ -47,13 +88,6 @@ public class CustomerModel {
         this.email = email;
     }
 
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
 
     public String getAddress() {
         return address;
@@ -63,13 +97,7 @@ public class CustomerModel {
         this.address = address;
     }
 
-    public String getCity() {
-        return city;
-    }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
 
     public String getDob() {
         return dob;

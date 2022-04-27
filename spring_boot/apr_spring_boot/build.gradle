@@ -19,6 +19,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.21'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.6.3'
+	implementation group: 'commons-io', name: 'commons-io', version: '2.10.0'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

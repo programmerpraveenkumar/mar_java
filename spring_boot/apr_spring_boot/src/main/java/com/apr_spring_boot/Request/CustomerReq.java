@@ -1,8 +1,18 @@
 package com.apr_spring_boot.Request;
 
 public class CustomerReq {
+    Integer customerId;
     String name;
     String email,password;
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+
+
     public String getName() {
         return name;
     }

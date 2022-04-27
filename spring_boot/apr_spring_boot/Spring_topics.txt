@@ -88,3 +88,33 @@ Create a CustomerRepo and Customermodel
 Inject the CustomerRepo in customerservice.
 Inject the customerservice in customer controller
 
+
+
+OneToOne Mapping
+OneToMany Mapping
+Manyto many mapping
+ManyToOne Mapping.
+
+
+token generation after the login success.
+token validation
+
+
+Login->username ,password
+		if success -> return the response with token and store the token in the database.
+		else -> send the error.
+
+
+Token interceptor:
+	gateway for the application.all the http request will go through this for validation.
+	by access the header(token ,userid) validate the data from the databse.
+	if exist request can go the controller else failure.
+	exclude the token validation for login, register.
+
+
+Logout
+	update the token as empty in the database.
+
+
+Controller advice:
+		common error handling in the springs boot application based on the error class.
