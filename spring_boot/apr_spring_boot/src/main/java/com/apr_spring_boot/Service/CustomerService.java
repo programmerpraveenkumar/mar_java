@@ -6,10 +6,12 @@ import com.apr_spring_boot.Repo.CustomerRepo;
 import com.apr_spring_boot.Request.CustomerReq;
 import com.apr_spring_boot.Response.CustomerResponse;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.spec.SecretKeySpec;
@@ -22,6 +24,8 @@ import java.util.Optional;
 
 @Service
 public class CustomerService {
+    @Autowired
+    Environment env;
 
     @Autowired
     CustomerRepo customerRepo;
@@ -42,30 +46,43 @@ public class CustomerService {
     }
 
     public boolean tokenValidation(String customerno,String token)throws  Exception{
-            Integer cust_no_int  = Integer.parseInt(customerno);//conver str to int;
-        System.out.println(cust_no_int+" "+token);
+        try {
+            Claims claims = Jwts.parser()
+                    .setSigningKey(env.getProperty("SECRET_KEY"))//read the value from the application prop file.
+                    .parseClaimsJws(token)
+                    .getBody();
+            Integer cust_no_int  = Integer.parseInt(customerno);//convert str to int;
             customerRepo.tokenValidation(cust_no_int,token).orElseThrow(()->new Exception("Token is not validated"));
             return true;//if customer is not exist it will throw the error.
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
     public CustomerResponse userLogin(CustomerReq req)throws  Exception{
+        try{
+            Optional<CustomerModel> customerOpt = customerRepo.login(req.getEmail(),req.getPassword());
+            if(customerOpt.isPresent()){
+                CustomerModel customerModel =   customerOpt.get();
+                String token = doGenerateToken(customerModel.getEmail());
+                // String token = getTOken(customerModel.getEmail());
+                CustomerResponse res = new CustomerResponse();
+                res.setCustomer_no(customerModel.getCustomer_no());
+                res.setName(customerModel.getName());
+                res.setAddress(customerModel.getAddress());
+                res.setToken(token);
+                updateToken(customerModel.getCustomer_no(),token);//update the token
+                //before sending the response store the token against the customer.
+                return res;
+            }else{
+                throw new Exception("User is not exist");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            throw e;
+        }
             //email and password from customer table.
-        System.out.println("this is login service");
-           Optional<CustomerModel> customerOpt = customerRepo.login(req.getEmail(),req.getPassword());
-           if(customerOpt.isPresent()){
-               CustomerModel customerModel =   customerOpt.get();
-              String token = doGenerateToken(customerModel.getEmail());
-              // String token = getTOken(customerModel.getEmail());
-               CustomerResponse res = new CustomerResponse();
-               res.setCustomer_no(customerModel.getCustomer_no());
-               res.setName(customerModel.getName());
-               res.setAddress(customerModel.getAddress());
-               res.setToken(token);
-              // updateToken(req.getCustomerId(),token);//update the token
-               //before sending the response store the token against the customer.
-               return res;
-           }else{
-               throw new Exception("User is not exist");
-           }
+
     }
     public void logout(int customerId){
         this.updateToken(customerId,"");//token is empty for logout api
@@ -73,32 +90,28 @@ public class CustomerService {
     private String doGenerateToken(String subject)throws Exception {
         try{
             //The JWT signature algorithm we will be using to sign the token
-            SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+
             long nowMillis = System.currentTimeMillis();
             Date now = new Date(nowMillis);
-            long ttlMillis = 45;
-            String SECRET_KEY = "SECRET_KEY";
-            byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(SECRET_KEY);
-            Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
+            long ttlMillis = 60*60*1000;//1hour token
+           // long ttlMillis = 5*1000;//5secs token
+            long expMillis = nowMillis + ttlMillis;
+            Date exp = new Date(expMillis);
+
+            byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(env.getProperty("SECRET_KEY"));//read the value from the application prop file.
+
             //Let's set the JWT Claims
             JwtBuilder builder = Jwts.builder()
                     .setIssuedAt(now)
                     .setSubject(subject)
-                    .signWith(signatureAlgorithm, signingKey);
-
-            //if it has been specified, let's add the expiration
-            if (ttlMillis > 0) {
-                long expMillis = nowMillis + ttlMillis;
-                Date exp = new Date(expMillis);
-                builder.setExpiration(exp);
-            }
-            //Builds the JWT and serializes it to a compact, URL-safe string
-            return builder.compact();
+                    .signWith(SignatureAlgorithm.HS256, apiKeySecretBytes)
+                    .setExpiration(exp);
+                //Builds the JWT and serializes it to a compact, URL-safe string
+            return builder.compact();//create jwt token
         }catch (Exception e){
             e.printStackTrace();
             throw new Exception(e.getMessage());
         }
-
     }
     private void updateToken(int customerId,String token){
         customerRepo.tokenUpdate(customerId,token);//update the token after login success

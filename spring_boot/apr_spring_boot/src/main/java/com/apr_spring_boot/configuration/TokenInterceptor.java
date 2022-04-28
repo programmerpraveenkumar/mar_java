@@ -30,7 +30,7 @@ public class TokenInterceptor implements HandlerInterceptor {
         System.out.println("this is prehandle");
         String url = request.getRequestURI();//current rquest url
         System.out.println(url);
-        if(url.contains("/login") || url.contains("/register")){
+        if(url.contains("/login") || url.contains("/register")|| url.contains("html")|| url.contains("web")){
             System.out.println("exclude the url "+url);
             return true;
         }else{
@@ -38,7 +38,8 @@ public class TokenInterceptor implements HandlerInterceptor {
                 String token = request.getHeader("token");//need to pass from the api request.
                 String user_id = request.getHeader("user_id");//need to pass from the api request.
                 if(token == null || token.equals("")){
-                    throw new Exception("token is empty");
+                    return true;
+                    //throw new Exception("token is empty");
 
                 }
                 if(user_id == null || user_id.equals("")){

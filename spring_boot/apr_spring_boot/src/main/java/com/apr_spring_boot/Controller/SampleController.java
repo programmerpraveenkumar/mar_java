@@ -5,6 +5,7 @@ import com.apr_spring_boot.Request.SampleReq;
 import com.apr_spring_boot.Response.SampleRes;
 import com.apr_spring_boot.Service.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,8 @@ it is statless api for process the get and post methods.
  */
 @RestController
 public class SampleController {
-
+        @Autowired
+        Environment env;
         @Autowired //DI
         SampleService sampleService;//inject the service class in the controller.
 
@@ -95,5 +97,9 @@ public class SampleController {
        List<CityModel> res = sampleService.getCityList();
        return ResponseEntity.ok(res);
     }
-
+    @GetMapping("getEnv")
+    public ResponseEntity<?> getEnv(){
+        String val =env.getProperty("SYSTEM_NAME");
+        return ResponseEntity.ok(val);
+    }
 }

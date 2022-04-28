@@ -21,7 +21,7 @@ import java.nio.file.Paths;
 
 //localhost:8080/customer/login
 //localhost:8080/customer/register
-@RestController
+@RestController//send the rest response
 @RequestMapping("customer")
 public class CustomerController {
     @Autowired
@@ -115,4 +115,5 @@ public class CustomerController {
 
         //call the login method from the customerservice
     }
+
 }
