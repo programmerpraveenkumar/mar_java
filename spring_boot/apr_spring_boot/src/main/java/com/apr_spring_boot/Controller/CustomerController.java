@@ -6,6 +6,8 @@ import com.apr_spring_boot.Service.CustomerService;
 
 
 import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +28,7 @@ import java.nio.file.Paths;
 public class CustomerController {
     @Autowired
     CustomerService customerService;
+    private static final Logger logger = LogManager.getLogger(CustomerController.class);
 
     @GetMapping("getCustomer")
     public ResponseEntity<?> getCustomers(){
@@ -80,8 +83,7 @@ public class CustomerController {
     @PostMapping("login")
     public ResponseEntity<?> customerLogin(@RequestBody CustomerReq req)throws Exception{
         SampleRes res = new SampleRes();
-        System.out.println("this is login..");
-
+        logger.info("this is login..");
             if(req.getEmail() == null ||req.getEmail().equals("")){
                 throw new Exception("Email should not be empty");
             }

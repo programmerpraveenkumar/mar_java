@@ -1,6 +1,7 @@
 package com.apr_spring_boot.Service;
 
 
+import com.apr_spring_boot.Controller.CustomerController;
 import com.apr_spring_boot.Model.CustomerModel;
 import com.apr_spring_boot.Repo.CustomerRepo;
 import com.apr_spring_boot.Request.CustomerReq;
@@ -10,7 +11,11 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.infinispan.manager.EmbeddedCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +34,19 @@ public class CustomerService {
 
     @Autowired
     CustomerRepo customerRepo;
+
+    private static final Logger logger = LogManager.getLogger(CustomerService.class);
+
+    @Autowired
+    EmbeddedCacheManager cacheManager;
+
+    public void storeInCache(){
+        cacheManager.getCache("local-cache").put("user_token","asdfjasdfjsadf");
+    }
+    public String getInCache(){
+        return cacheManager.getCache("local-cache").get("user_token").toString();
+    }
+
 
     public void storeUser(CustomerReq req){
         //TODO :: check email is exist or not.
@@ -52,17 +70,41 @@ public class CustomerService {
                     .parseClaimsJws(token)
                     .getBody();
             Integer cust_no_int  = Integer.parseInt(customerno);//convert str to int;
-            customerRepo.tokenValidation(cust_no_int,token).orElseThrow(()->new Exception("Token is not validated"));
-            return true;//if customer is not exist it will throw the error.
+          if(cacheManager.getCache("local-cache").get("token_"+customerno) != null){
+              String tokenCache = cacheManager.getCache("local-cache").get("token_"+customerno).toString();
+              //get the token from cache
+              if(tokenCache != null){
+                  if(token.equals(tokenCache)){
+                      System.out.println("token is validated and matched from the cache..");
+                      return true;
+                  }
+                  System.out.println("token is not matched.");
+              }
+          }else{
+              String tokenDb = customerRepo.getTokenByUserId(cust_no_int);
+              System.out.println("token is validated from database");
+              if(tokenDb.equals(token)){
+                  System.out.println("token is updated in the cache");
+                  cacheManager.getCache("local-cache").put("token_"+customerno,tokenDb);//store the token in cache.
+                  return true;
+              }
+              System.out.println("token is not matched.");
+              //if token is not exist in the cache..need to test from db
+              //customerRepo.tokenValidation(cust_no_int,token).orElseThrow(()->new Exception("Token is not validated"));
+          }
+            throw new Exception("token is not matched");
         } catch (Exception e) {
             e.printStackTrace();
-            throw e;
+            throw new Exception("Error while parsing token or token expired");
+           // throw new Exception("Error :: token");
         }
     }
     public CustomerResponse userLogin(CustomerReq req)throws  Exception{
         try{
+            logger.error("User is login..");
             Optional<CustomerModel> customerOpt = customerRepo.login(req.getEmail(),req.getPassword());
             if(customerOpt.isPresent()){
+                logger.info("User is present..");
                 CustomerModel customerModel =   customerOpt.get();
                 String token = doGenerateToken(customerModel.getEmail());
                 // String token = getTOken(customerModel.getEmail());
@@ -71,13 +113,16 @@ public class CustomerService {
                 res.setName(customerModel.getName());
                 res.setAddress(customerModel.getAddress());
                 res.setToken(token);
+                logger.info("update the token ..");
                 updateToken(customerModel.getCustomer_no(),token);//update the token
                 //before sending the response store the token against the customer.
                 return res;
             }else{
+                logger.error("user is not exist. ..");
                 throw new Exception("User is not exist");
             }
         }catch (Exception e){
+            logger.error("this is login..");
             e.printStackTrace();
             throw e;
         }
@@ -114,6 +159,7 @@ public class CustomerService {
         }
     }
     private void updateToken(int customerId,String token){
+        cacheManager.getCache("local-cache").put("token_"+customerId,token);//store the token in cache.
         customerRepo.tokenUpdate(customerId,token);//update the token after login success
     }
     private String getTOken(String email){
@@ -127,7 +173,16 @@ public class CustomerService {
     }
 
     public CustomerModel getCustomerById(Integer id)throws Exception{
-         return customerRepo.findById(id).orElseThrow(()->new Exception("Customer is not exist"));//get the customer by id;
+        CustomerModel customerModel = null;
+        if(cacheManager.getCache("local-cache").get("detail_"+id) == null){
+            //if cache does not have the data
+             customerModel =  customerRepo.findById(id).orElseThrow(()->new Exception("Customer is not exist"));//get the customer by id;
+            cacheManager.getCache("local-cache").put("detail_"+id,customerModel);
+        }else{
+            //cache has the data.
+            customerModel = (CustomerModel) cacheManager.getCache("local-cache").get("detail_"+id);
+        }
+        return customerModel;
     }
 
     public boolean customerDelete(Integer id)throws  Exception{

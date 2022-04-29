@@ -48,7 +48,7 @@ public class TokenInterceptor implements HandlerInterceptor {
                 if(customerService.tokenValidation(user_id,token)){
                     return true;
                 }else{
-                    return false;
+                    throw new Exception("token Error");
                 }
             }catch (Exception e){
 //                e.printStackTrace();

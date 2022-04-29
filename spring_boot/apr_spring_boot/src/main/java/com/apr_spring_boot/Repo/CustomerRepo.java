@@ -22,6 +22,9 @@ public interface CustomerRepo  extends JpaRepository<CustomerModel,Integer> {
     @Query("select c from CustomerModel c where c.customer_no=?1 and c.token =?2")
     Optional<CustomerModel> tokenValidation(Integer customer_no, String token);
 
+    @Query("select c.token from CustomerModel c where c.customer_no=?1 ")
+    String getTokenByUserId(Integer customer_no);
+
 
     @Transactional
     @Modifying

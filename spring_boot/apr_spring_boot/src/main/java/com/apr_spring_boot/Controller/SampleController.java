@@ -3,6 +3,7 @@ package com.apr_spring_boot.Controller;
 import com.apr_spring_boot.Model.CityModel;
 import com.apr_spring_boot.Request.SampleReq;
 import com.apr_spring_boot.Response.SampleRes;
+import com.apr_spring_boot.Service.CustomerService;
 import com.apr_spring_boot.Service.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -20,6 +21,8 @@ it is statless api for process the get and post methods.
 public class SampleController {
         @Autowired
         Environment env;
+        @Autowired
+        CustomerService cusService;
         @Autowired //DI
         SampleService sampleService;//inject the service class in the controller.
 
@@ -101,5 +104,17 @@ public class SampleController {
     public ResponseEntity<?> getEnv(){
         String val =env.getProperty("SYSTEM_NAME");
         return ResponseEntity.ok(val);
+    }
+
+    @GetMapping("getCache")
+    public ResponseEntity<?> getCache(){
+        String val = cusService.getInCache();
+        return ResponseEntity.ok(val);
+    }
+
+    @GetMapping("storeCache")
+    public ResponseEntity<?> storeCache(){
+        cusService.storeInCache();;
+        return ResponseEntity.ok("store cache");
     }
 }
