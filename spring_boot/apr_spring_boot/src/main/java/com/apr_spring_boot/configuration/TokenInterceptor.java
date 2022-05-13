@@ -37,19 +37,20 @@ public class TokenInterceptor implements HandlerInterceptor {
             try{
                 String token = request.getHeader("token");//need to pass from the api request.
                 String user_id = request.getHeader("user_id");//need to pass from the api request.
-                if(token == null || token.equals("")){
-                    return true;
-                    //throw new Exception("token is empty");
-
-                }
-                if(user_id == null || user_id.equals("")){
-                    throw new Exception("token is empty");
-                }
-                if(customerService.tokenValidation(user_id,token)){
-                    return true;
-                }else{
-                    throw new Exception("token Error");
-                }
+//                if(token == null || token.equals("")){
+//                    return true;
+//                    //throw new Exception("token is empty");
+//
+//                }
+//                if(user_id == null || user_id.equals("")){
+//                    throw new Exception("token is empty");
+//                }
+//                if(customerService.tokenValidation(user_id,token)){
+//                    return true;
+//                }else{
+//                    throw new Exception("token Error");
+//                }
+                return true;
             }catch (Exception e){
 //                e.printStackTrace();
 //                response.setStatus(400);//error status code

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:each="city:${cityList}">
+    <span th:text="${city.city_id}"></span>
+    <span th:text="${city.cityname}"></span>
+</div>
+
+</body>
+</html>

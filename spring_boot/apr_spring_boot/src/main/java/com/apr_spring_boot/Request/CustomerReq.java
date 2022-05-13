@@ -3,7 +3,37 @@ package com.apr_spring_boot.Request;
 public class CustomerReq {
     Integer customerId;
     String name;
-    String email,password;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    String id;
+    String email;
+    String password;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPincode() {
+        return pincode;
+    }
+
+    public void setPincode(String pincode) {
+        this.pincode = pincode;
+    }
+
+    String address;
+    String pincode;
     public Integer getCustomerId() {
         return customerId;
     }

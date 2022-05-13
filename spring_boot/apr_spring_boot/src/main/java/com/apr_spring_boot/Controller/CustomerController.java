@@ -34,9 +34,25 @@ public class CustomerController {
     public ResponseEntity<?> getCustomers(){
         return ResponseEntity.ok(customerService.getCustomers());//get all the customer
     }
+    @GetMapping("getUsersFromMongo")
+    public ResponseEntity<?> getUsersFromMongo(){
+        return ResponseEntity.ok(customerService.getUsersFromMongodb());
+    }
+    @PostMapping("insertUserInMongo")
+    public ResponseEntity<?> insertUserInMongo(@RequestBody CustomerReq req){
+        customerService.insertUserInMongo(req);
+        return ResponseEntity.ok("inserted success");
+
+    }
+    @PostMapping("deleteByIdUserInMongo")
+    public ResponseEntity<?> deleteByIdUserInMongo(@RequestBody CustomerReq req) {
+        customerService.deleteFromMongodb(req.getId());//delete
+        return ResponseEntity.ok("inserted success");
+    }
 
 
-    @GetMapping(value = "file_download/{fileName}",produces = MediaType.IMAGE_PNG_VALUE)
+
+        @GetMapping(value = "file_download/{fileName}",produces = MediaType.IMAGE_PNG_VALUE)
     public @ResponseBody byte[]  file_download(@PathVariable String  fileName){
 
         try{

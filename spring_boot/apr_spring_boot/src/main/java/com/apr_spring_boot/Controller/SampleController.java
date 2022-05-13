@@ -5,6 +5,7 @@ import com.apr_spring_boot.Request.SampleReq;
 import com.apr_spring_boot.Response.SampleRes;
 import com.apr_spring_boot.Service.CustomerService;
 import com.apr_spring_boot.Service.SampleService;
+import com.apr_spring_boot.configuration.EmailSent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
@@ -117,4 +118,12 @@ public class SampleController {
         cusService.storeInCache();;
         return ResponseEntity.ok("store cache");
     }
+
+    @GetMapping("sample_email")
+    public ResponseEntity<?> sample_email(){
+        EmailSent.sendEmail("sample@gmai.com","sample subject","sample body");
+        return ResponseEntity.ok("store cache");
+    }
+
+
 }

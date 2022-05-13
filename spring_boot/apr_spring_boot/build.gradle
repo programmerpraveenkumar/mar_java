@@ -22,8 +22,11 @@ dependencies {
 	implementation group: 'commons-io', name: 'commons-io', version: '2.10.0'
 	implementation group: 'org.infinispan', name: 'infinispan-spring-boot-starter-embedded', version: '13.0.9.Final'
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
-	implementation group: 'org.thymeleaf', name: 'thymeleaf', version: '2.0.5'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.6.6'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '2.6.4'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.6.5'
+
 }
 
 tasks.named('test') {

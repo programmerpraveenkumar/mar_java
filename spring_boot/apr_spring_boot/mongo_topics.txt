@@ -1,0 +1,5 @@
+RDBMS	MongoDB
+Database	Database
+Table	Collection
+Row	Document
+column	Field

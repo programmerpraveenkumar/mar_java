@@ -3,7 +3,9 @@ package com.apr_spring_boot.Service;
 
 import com.apr_spring_boot.Controller.CustomerController;
 import com.apr_spring_boot.Model.CustomerModel;
+import com.apr_spring_boot.Model.MongoDb.UserModelMongo;
 import com.apr_spring_boot.Repo.CustomerRepo;
+import com.apr_spring_boot.Repo.UserModelMongoRepo;
 import com.apr_spring_boot.Request.CustomerReq;
 import com.apr_spring_boot.Response.CustomerResponse;
 
@@ -32,6 +34,8 @@ public class CustomerService {
     @Autowired
     Environment env;
 
+    @Autowired
+    UserModelMongoRepo userModelMongoRepo;
     @Autowired
     CustomerRepo customerRepo;
 
@@ -65,6 +69,7 @@ public class CustomerService {
 
     public boolean tokenValidation(String customerno,String token)throws  Exception{
         try {
+            logger.debug("this is token validation");
             Claims claims = Jwts.parser()
                     .setSigningKey(env.getProperty("SECRET_KEY"))//read the value from the application prop file.
                     .parseClaimsJws(token)
@@ -94,6 +99,7 @@ public class CustomerService {
           }
             throw new Exception("token is not matched");
         } catch (Exception e) {
+            logger.error(e);
             e.printStackTrace();
             throw new Exception("Error while parsing token or token expired");
            // throw new Exception("Error :: token");
@@ -101,7 +107,8 @@ public class CustomerService {
     }
     public CustomerResponse userLogin(CustomerReq req)throws  Exception{
         try{
-            logger.error("User is login..");
+            logger.debug("this is debug message");
+            logger.info("User is login..");
             Optional<CustomerModel> customerOpt = customerRepo.login(req.getEmail(),req.getPassword());
             if(customerOpt.isPresent()){
                 logger.info("User is present..");
@@ -213,6 +220,33 @@ public class CustomerService {
         }else{
             throw new Exception("User is not exist");
         }
+    }
+
+    public List<UserModelMongo> getUsersFromMongodb(){
+        return userModelMongoRepo.findAll();//get all data from the mongodb may_Mongo->user collection.
+    }
+    public boolean deleteFromMongodb(String id){
+        userModelMongoRepo.deleteById(id);
+        return true;
+    }
+    public boolean getUserById(String id){
+        userModelMongoRepo.findById(id);//get the user by id.
+        return true;
+    }
+    public boolean insertUserInMongo(CustomerReq req){
+        try{
+            UserModelMongo userModelMongo = new UserModelMongo();
+            userModelMongo.setAddress(req.getAddress());
+            userModelMongo.setPincode(req.getPincode());
+            userModelMongo.setName(req.getName());
+            userModelMongo.setEmail(req.getEmail());
+            userModelMongoRepo.save(userModelMongo);//store the data in mongodb
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+
     }
 
 }
