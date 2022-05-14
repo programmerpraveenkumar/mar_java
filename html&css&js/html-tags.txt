@@ -1,0 +1,42 @@
+h1 to h6
+    heading tags 
+input
+    gets the input from the user (one line )
+text area
+    gets the input from the user (multi line )
+div,section
+    separate the content.
+span
+    inline content.
+
+header
+    header of the webpage
+footer
+    footer of the webpage
+ul
+    unorder list
+li
+    order list
+a
+    anchor tag.navgiate from one webpage to another.
+button
+    to create the  button 
+img
+    to show the image in the webpage.
+form
+    send the form data to server.
+
+iframe
+    load the external webpage in the webpage.
+select
+    dropdown with muliple options to select
+video
+    load and play the video
+audio
+    load and play the audio
+
+table
+    load the html table 
+
+
+https://www.w3schools.com/TAgs/default.asp
