@@ -1,0 +1,62 @@
+ul{
+    padding: 0;
+}
+.menu-li {
+display: inline-block;
+margin:0 10px;
+}
+a{
+text-decoration: none;
+}
+a:hover{
+color:red;
+text-decoration: underline;
+}
+/* below is parent and child */
+.has-sub li{
+list-style-type: none;
+}
+.has-sub{
+position: relative;
+}
+.sub-menu{
+display: none;
+position: absolute;
+top:15px;
+left: 0;
+width: 95px;
+}
+.has-sub:hover .sub-menu{
+    display: block;
+}
+.contact-form{
+    width: 50%;
+    margin:0 auto;
+}
+.contact-form input,.contact-form textarea{
+    width: 100%;;
+    margin: 10px 0;
+    resize: none;
+}
+.contact-form textarea{
+    resize: none;
+    height: 150px;
+}
+.sub-btn-wrap{
+    width: 20%;
+    margin:0 auto
+}
+.sub-btn{
+    background-color: bisque;
+    width: 100%;
+}
+
+/* 
+    apply the css only for the direct children
+
+*/
+.menu-li.active > a{
+        background-color: blue;
+        color: #fff;
+        padding:0 10px; 
+}

@@ -1,8 +1,202 @@
 <html>
     <head>
+            <style>
+                body{
+                    background-color: #23b0332d;
+                }
+                h1{
+                    
+                }
+                /* apply css using class name */
+                .header{
+                    color: red;
+                    font-size: 45px;
+                    text-align: center;
+                    text-decoration: underline;
+                    text-transform: capitalize;
 
+                }
+                .header1{
+                    color: red;
+                    font-size: 45px;
+                    float: right;
+                }
+                /* apply css using id */
+                #sample_id{
+                    color: brown;
+                    font-size: 45px;
+                }
+                .text_area{
+                    width: 50%;
+                    height: 150px;
+                    border: 2px solid #ff1b1b;
+                }
+                img{
+                    display: none;
+                }
+                .content{
+                    width: 50%;
+                    height: 150px;;
+                    background-color: aqua;
+                    overflow: auto;
+                }
+                .trans_button{
+                    background-color: red;
+                    opacity: 1;
+                    padding-top: 100px;
+                    padding-bottom: 100px;
+                    padding-left: 100px;
+                    padding-right: 100px;  
+                    }
+                .trans_button{
+                    padding: 30px 50px 60px 70px;
+                }
+                .google_link{
+                    text-decoration:none;
+                }
+                /* .sub_btn{
+                    margin-top: 100px;
+                    margin-bottom: 100px;
+                    margin-left: 100px;
+                    margin-right: 100px;
+                } */
+                .sub_btn{
+                    margin: 20px 35px;
+                }
+                .time_ele{
+                    /* 
+                        element will not move even if scrolling happens
+                        should provide the any 2 sides.(top or bottom and right or left).
+                        element will be placed by by browser size.
+                    */
+                    position: fixed;
+                    top:100px;
+                    right: 40px;
+                }
+                .parent_div{
+                    /* relative will help us to control the child of absolute */
+                        position: relative;
+                }
+                .child_div{
+                    /*
+                    scroll the element if needed.
+                    element will be positioned in the mentioned values.
+                    */
+                        position: absolute;
+                        top:100px;
+                        right: 100px;
+                }
+            </style>
     </head>
     <body>
+        <header>this is sample header</header>
             content of the webpage.
+            <h1 class="header1">sample h1</h1>
+            <h2>sample h2</h2>
+            <h1 class="time_ele">05:19</h1>
+            <div class="content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris laoreet sem lectus, ut pulvinar risus hendrerit vel. Cras feugiat metus ante, sed volutpat odio vestibulum in. Ut faucibus odio neque, quis aliquet ante finibus ultrices. Mauris venenatis dolor turpis, bibendum tempor tortor dapibus id. Etiam nec tortor scelerisque, dictum velit vitae, vestibulum ante. Maecenas quis consequat dolor, sed vulputate magna. Fusce ac posuere mi, volutpat aliquet arcu. Nam justo tortor, molestie quis lacinia et, dapibus eget nunc. Etiam faucibus consectetur enim. Duis finibus accumsan posuere. Aenean mattis, nisl at tincidunt porttitor, mauris magna rutrum purus, ac cursus lectus felis ac orci. Quisque tincidunt, lectus convallis hendrerit mollis, ipsum dolor commodo odio, vitae euismod nibh sapien id turpis. Donec bibendum purus vel imperdiet tristique. Aliquam vel urna sit amet risus tincidunt volutpat.
+
+                Duis tincidunt sollicitudin nulla. Nunc in laoreet arcu. Vestibulum maximus nec erat at semper. Praesent maximus, nisi vel accumsan pharetra, est eros fringilla arcu, ac rutrum purus metus eget lectus. Nulla rutrum viverra pretium. Nulla eleifend eget nibh sed tincidunt. Etiam fringilla ultrices lectus ac sodales. Duis in dictum leo. Vivamus hendrerit diam tortor, ac malesuada arcu tristique id. Phasellus consequat tincidunt sollicitudin. Praesent eget dapibus magna. Ut malesuada odio dignissim, efficitur est et, venenatis eros. Ut venenatis magna ut lacus fermentum, at finibus mauris semper. Fusce at feugiat felis. Mauris feugiat tellus sed neque venenatis, sit amet commodo nisl convallis. Aenean non interdum mauris.
+                
+                Curabitur aliquam orci in sapien varius pellentesque. Sed malesuada accumsan cursus. Integer sed ligula dolor. Cras at elit eros. Integer ultricies, odio ornare fermentum pellentesque, arcu ligula fringilla leo, ac faucibus metus magna vel nunc. Maecenas et eleifend lacus. In eget magna a odio sagittis ullamcorper. In lobortis tempor magna, ac molestie metus porta vitae. Ut interdum nunc eros, sed ultrices tortor imperdiet ut. Vestibulum commodo pharetra bibendum. Cras ipsum lectus, congue eget velit pulvinar, iaculis placerat sapien. Vivamus semper elit felis, et cursus erat lobortis quis. Duis posuere tempus mauris, a aliquam enim convallis non. Phasellus sollicitudin nibh ac dolor mollis laoreet. Pellentesque semper sed nulla in ornare. Curabitur at risus mauris.            </div>
+            <h6 class="header">sample h6</h6>
+            <div>
+                <input id="sample_id" type="text">
+            </div>
+            
+            <div>
+                <input type="password">
+            </div>
+            <div>
+                <input type="radio">
+            </div>
+            <div>
+                <input type="checkbox">
+            </div>
+            
+            <div>
+                <span>hi</span>
+                <span>how are you</span>
+            </div>
+            <ul>
+                <li>
+                    asdfasdf
+                </li>
+                <li>
+                sample2
+                </li>
+                <li>
+                    sample3
+                </li>
+                <li>
+                    sample4
+                </li>
+            </ul>
+            <textarea class="text_area"></textarea>
+            <a class="google_link" href="https://www.google.com/">Click here to go to google</a>
+            <a href="https://www.free-css.com/free-css-templates"> Free css</a>
+            <button class="trans_button">sample button</button>
+            <button>sample button2</button>
+            <img width="100" height="150" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png">
+            <img  width="100" height="150" src="file:///Users/praveen/Pictures/Screenshots/Screenshot_1573665433.png" >
+            <form method="POST" action="server_end_point_url">
+
+                <input type="text" placeholder="Enter Username">
+                <input type="password" placeholder="Enter password">
+                <input class="sub_btn" type="button" value="Submit">
+            </form>
+            <iframe src="home2.html" frameborder="0"></iframe>
+            <iframe src="https://www.google.com/" frameborder="0"></iframe>
+            <select>
+                    <option>sample 1</option>
+                    <option>sample 2</option>
+                    <option>sample 3</option>
+                    <option>sample 4</option>
+            </select>
+            <!-- <video  src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4"></video> -->
+            <audio src="audio_url"></audio>
+            <table>
+                <tr>
+                    <td>adfadsf</td>
+                    <td>adfadsf</td>
+                    <td>adfadsf</td>
+                    <td>adfadsf</td>
+                    <td>adfadsf</td>
+
+
+                </tr>
+                <tr>
+                    <td>adfadsf</td>
+                    <td>adfadsf</td>
+                    <td>adfadsf</td>
+                    <td>adfadsf</td>
+                    <td>adfadsf</td>
+
+                    
+                </tr>
+                <tr>
+                    <td>adfadsf</td>
+                    <td>adfadsf</td>
+                    <td>adfadsf</td>
+                    <td>adfadsf</td>
+                    <td>adfadsf</td>
+
+                    
+                </tr>
+                <tr>
+                    <td>adfadsf</td>
+                    <td>adfadsf</td>
+                    <td>adfadsf</td>
+                    <td>adfadsf</td>
+                    <td>adfadsf</td>
+                </tr>
+            </table>
+            <div class="parent_div">
+                <div class="child_div">
+                    this is another content;
+                </div>
+            </div>
+            <footer></footer>
     </body>
 </html>

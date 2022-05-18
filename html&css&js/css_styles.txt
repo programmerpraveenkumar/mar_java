@@ -1,0 +1,74 @@
+color
+    color of the text.(color name,hex code,RGB code)
+background-color
+    background color of the element.(color name,hex code,RGB code)
+width
+    width of the element
+height
+    height of the element
+font-size
+    text size of the element.
+display
+    to show or hide the content.
+
+overlflow
+    controls the data when it overflows.
+        hidden ->hide the content
+        auto->add the scrollbar when it is necessary
+        scroll -> will add the scrollbar always.
+overflow-y
+    above overlflow prop only for y-axis.
+
+overflow-x
+    above overlflow prop only for x-axis.
+
+float
+    makes the content float to the left,right.
+
+
+
+opacity
+    transparency of the element.
+        0.1,0.2,0.3...0.9,1
+
+border
+    border of the element.
+
+text-align
+        to make the content center , left ,right
+
+text-decoration
+        adding or removing the underline for the text
+
+text-transform
+    change the text uppercase or lowercase
+min-height
+    minimum height of the element.
+
+min-width
+    minimum width of the element.maximum can be anything.
+
+
+margin
+    space around the element.but outside.
+
+    margin:10px 15px 20px 25px;//top right bottom left
+    margin:10px 15px 20px;//top right&left bottom
+    margin:10px 15px;//top&bottom right&left
+    margin:15px;//for all 4 sides wil apply the values
+
+padding
+    space around the elemene.but with the background color.
+    padding:10px 15px 20px 25px;//top right bottom left
+    padding:10px 15px 20px;//top right&left bottom
+    padding:10px 15px;//top&bottom right&left
+    padding:15px;//for all 4 sides wil apply the values
+
+position
+        to have fixed element in the webpage.then position can be needed.
+        fixed,relative,absolute
+left,right
+
+
+px->fixed size for all the screen(mobile,laptop or any screen)
+%->depends on the size it will change.
