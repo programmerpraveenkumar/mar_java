@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script>
+            /*
+            index array can be declared using []
+            object array can be declared using {}->key and value
+            */
+                let name = [];//empty arrray declaration
+                name[0] = "test";
+                name[1] = "test1";
+                name[2] = "test2";
+                name[3] = "test3";
+                name.push("adding val to array wthout idnex");
+                name.push("adding val ");
+                //to get the size of the array.
+                console.log(name.length);
+                console.log(name);
+                name.pop();//removes the last element
+                console.log(name);
+
+                //splice -- add the value by the mentioned position.
+                const fruits = ["Banana", "Orange", "Apple", "Mango"];
+                console.log(fruits);
+                fruits.splice(0, 0, "Lemon", "Kiwi")
+                console.log(fruits);
+
+                //slice->create new array by the position.
+                const fruits_1 = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+                const citrus = fruits_1.slice(1);//new array from the position
+                console.log(citrus);
+        </script>
+    </head>
+
+
+</html>

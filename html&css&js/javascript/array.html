@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <script>
+            /*
+            index array can be declared using []
+            object array can be declared using {}->key and value
+            */
+                let name = [];//empty arrray declaration
+                name[0] = "test";
+                name[1] = "test1";
+                name[2] = "test2";
+                name[3] = "test3";
+                name.push("adding val to array wthout idnex");
+                console.log(name[3]);
+                console.log(name[13]);//return undefined.as it is not exist.
+                //array iteration in javascript
+                for(let index in name){
+                        console.log(index+" -- "+name[index]);
+                }
+
+                let personDetail = {
+                    "name":"test name",
+                    "email":"test@gmail.com",
+                    "mobile":46546464
+                };
+
+                console.log(personDetail['mobile']);
+                personDetail['pincode'] =  "45646465";//added to the object array.
+                for(let key in personDetail){
+                        console.log(key+" -- "+personDetail[key]);
+                }
+        </script>
+    </head>
+
+
+</html>

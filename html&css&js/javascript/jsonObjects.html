@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <script>
+        /*
+        combine the both index and object array.
+        */
+       let personsDetail = [
+           {
+               "name":"testname",
+               "email":"test@gmail.com",
+               "pincode":"5464"
+           },
+           {
+               "name":"testname1",
+               "email":"test1@gmail.com",
+               "pincode":"8789875464566"
+           }
+           ,
+           {
+               "name":"testname",
+               "email":"test2@gmail.com",
+               "pincode":"54646546"
+           }
+       ];
+       console.log(personsDetail[2]['email']);
+       console.log("---iteration--")
+       for(let index in personsDetail){
+           console.log(personsDetail[index]['name']);
+           console.log(personsDetail[index]['email']);
+           console.log(personsDetail[index]['pincode']);
+
+       }
+
+    </script>
+</head>
+</html>

@@ -1,0 +1,35 @@
+Javascript:
+	internal:
+		javascript will be added to the head tag.
+        <script></script>
+	external:
+		javascript will be loaded from external javascript file.
+        <script src="link_js"></script>
+
+
+variable declartion
+    let,var,const
+array declaration
+json objects
+function or method declaration
+array methods
+string methods
+number methods
+event handling
+	onclick(on click on the mouse),onkeyup,onchange(select dropdown)
+
+	
+dom manipulation
+Date in javascript and its methods
+api call or server integration
+oops concepts in javascript
+filter,map in arrays.
+typescript
+
+
+angular:....
+
+
+
+
+Front-end
