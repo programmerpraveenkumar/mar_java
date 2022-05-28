@@ -19,7 +19,7 @@ event handling
 	onclick(on click on the mouse),onkeyup,onchange(select dropdown)
 
 	
-dom manipulation
+dom(document object model) manipulation
 Date in javascript and its methods
 api call or server integration
 oops concepts in javascript

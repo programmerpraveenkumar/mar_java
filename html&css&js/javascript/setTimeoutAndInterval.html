@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script>
+            /*
+            settimeout->execute the function after the mentioned time.will execute only once
+            setInterval->execute the function in the every interval time.
+            */
+           let interval = "";
+            function timeOut(){
+                console.log("sample settimeout1")
+                setTimeout(function(){
+                    console.log("sample settimeout2")
+                },2000);
+            }
+            function timeInterval(){
+                interval= setInterval(function(){
+                    console.log("sample setInterval "+new Date())
+                },2000);
+            }
+            function clearIntervalTEst(){
+                    clearInterval(interval);
+            }
+        </script>
+    </head>
+<body>
+    
+    <input type="button" onclick="timeOut()"value="CLick to start the timeout">
+    <input type="button" onclick="timeInterval()"value="CLick to start the timeInterval">
+    <input type="button" onclick="clearIntervalTEst()" value="CLear Inteval">
+</body>
+
+</html>

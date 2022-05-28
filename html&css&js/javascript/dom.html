@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script>
+            //below method triggers after the button click
+            function printInHtml(){
+               //get the div obj in js.append the value to show
+               document.getElementById("div_id").innerHTML = "sampleHTML";
+               document.getElementById("h1_ele").innerHTML = "this is heading element";
+            }
+           
+        </script>
+    </head>
+
+    <body>
+        <div id="div_id">dfgdfg</div>
+        <h1 id="h1_ele"></h1>
+        <input type="button" value="dom_change" onclick="printInHtml()" />
+    </body>
+    
+
+</html>

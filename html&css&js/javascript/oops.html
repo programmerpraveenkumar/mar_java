@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <script>
+          class Person{
+              //variable creation in javascript
+              name =  "test";
+              age = 45;
+              //method creation in javascript
+              printName(){
+                  console.log("this is the print name ",this.name);//need to use `this` to access the variable
+              }
+          }
+          person = new Person();
+        </script>
+    </head>
+<body>
+    <input type="button" onclick="person.printName()" value="Click to print Name">
+</body>
+
+</html>

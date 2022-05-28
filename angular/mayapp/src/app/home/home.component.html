@@ -1,0 +1,77 @@
+<app-header></app-header>
+
+<!-- binding the variable from ts -->
+<h1>{{pageName}}</h1>
+<h1>This is home componeotn html</h1>
+
+<h1>{{message}}</h1>
+<input type="text" [(ngModel)]="message" placeholder="PLease Enter Message">
+<h1>{{age}}</h1>
+<input type="text" [(ngModel)]="age" placeholder="PLease Enter the Age">
+
+<div>
+    <h1>Login form</h1>
+    <div>
+        <input type="text" placeholder="Enter Username" [(ngModel)]="username"/>
+    </div>
+    <div>
+        <input type="text" placeholder="Enter Password" [(ngModel)]="password">
+    </div>
+    <div>
+        <input type="button" (click)="validate()"  value="Click to validate">
+    </div>
+</div>
+
+
+<!--
+    ngIf
+     if true it will show 
+     if false it will hide..
+
+-->
+<h1 *ngIf="hideOrShow">Hideme or show me</h1>
+<input type="button" value="Hide or show" (click)="hideOrShowMethod()"/>
+
+<!-- ngFor to iterate the elements -->
+<div *ngFor="let key of personDetail">
+    <h1 [ngClass]="{'blue':key.age < 15,'red':key.age > 35}">{{key.name}} and his age is {{key.age}}</h1>
+
+</div>
+<div *ngFor="let city of cityName">
+    <h1 *ngIf="city.peopleCount <500">{{city.name}} and his peopleCount is {{city.peopleCount}}</h1>
+
+</div>
+
+<h2>{{person.age}}--{{person.name}}</h2>
+
+<!-- 
+    ngClass->add or remove the classes for the element.
+ -->
+
+ <div>
+
+    <h1 [ngClass]="cssClassName">sample data</h1>
+    <button (click)="changeCssClassname('red')">Red</button>
+    <button  (click)="changeCssClassname('green')">Green</button>
+    <button  (click)="changeCssClassname('blue')">Blue</button>
+ </div>
+
+ <div>
+
+    <button (click)="loadUser()">Load User</button>
+
+    <div *ngFor="let user of userResponse">
+        {{user.first_name}} --- {{user.email}}
+        <img src="{{user.avatar}}" alt="">
+    </div>
+
+  
+ </div>
+
+ <div>
+     <input type="text" [(ngModel)]="username" placeholder="Enter Name">
+     <input type="text" [(ngModel)]="jobname" placeholder="Enter JOb Name">
+    <button (click)="createUser()">create User</button>
+
+
+ </div>

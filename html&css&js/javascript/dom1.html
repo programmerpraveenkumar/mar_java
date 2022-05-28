@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script>
+            //below method triggers after the button click
+            function getTextBoxValue(){
+               //get the input obj in js to get the value
+               let val = document.getElementById("username_txt").value;
+               if(val == ""){
+                   alert("Please Enter input box");//show alrt message
+               }else{
+                document.getElementById("sample_txt").innerHTML = val;//appending the textbox to the h1 element
+               }
+            }
+           
+        </script>
+    </head>
+
+    <body>
+        <input type="text" id="username_txt" placeholder="Enter Username"/>
+        <h1 id="sample_txt"></h1>
+        <input type="button" value="getValue" onclick="getTextBoxValue()" />
+    </body>
+    
+
+</html>

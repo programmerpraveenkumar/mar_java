@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script>
+            //below method triggers after the button click
+            function validation(){
+               
+               let username_val  = document.getElementById("username").value;//get the value from the textboxm
+               let password_val  = document.getElementById("password").value;
+               if(username_val == ""){
+                   alert("username is empty");
+               }else if(password_val == ""){
+                   alert("Password should not be empty");
+               }else{
+                   alert("everything is ok..");
+               }
+            }
+           
+        </script>
+    </head>
+
+    <body>
+        <input type="text" placeholder="Enter UserName" id="username">
+        <input type="text" placeholder="Enter Password" id="password">
+        <input type="button" value="validate the form" onclick="validation()" />
+    </body>
+    
+
+</html>

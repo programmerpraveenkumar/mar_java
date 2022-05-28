@@ -1,0 +1,77 @@
+ng new {app_name}
+	1.Add routing or not.? Yes
+	2.what css framework..?css
+
+Install the dependencies.
+
+Traditional app:
+	index.html->header+content+footer
+	about.html->header+content+footer
+	contact.html->header+content+footer
+
+Component architecture:(html, css,ts,spec.ts)
+Reusable component:
+Header->header component 
+Footer->footer component 
+
+Routing components:
+localhost:4200/index -> Index.html->header component +index component+footer component
+localhost:4200/about -> About.html->header component +about component+footer component
+localhost:4200/contact -> Contact.html->header component +contact component+footer component
+
+
+Other advantages of angular:
+	component ->web pages.
+	services->common business logic can be implemented in separate file, and access in the project.
+	directives->reusable ui in the apps.
+	pipes->text transformation
+	routing configuration->navigation from one page to another 
+	template integration->webpages integration (integrating the new html pages )
+	http api calls(spring boot api)->http api integration with header and post, get request.
+	security(token authentication and authorisation)->login token
+	app.module.ts->common project file.
+
+	
+	
+
+Angular commands:
+	ng new appname -> create the angular app
+	ng serve->to run the app.(http://localhost:4200)
+	ng build->to build the angular app.
+	ng g c component -> to create component 
+	ng g d directive_name->to create directives
+	ng g p pipename-> to create pipes
+	ng g s servicename -> to create services
+
+
+g->generate
+C->component
+D->directives
+P->pipes
+S->service
+
+
+binding:(one way and two way)
+display the variables in the html pages.
+	load the variable from ts to html page
+
+one way data binding:
+	ts->html
+two  way data binding:
+	ts<->html
+
+Default directives:
+ngIf
+	hide or show the elements
+ngFor
+	iterate the elements
+ngClass
+	adding or removing the css classes on the elements.
+
+http api integration
+	GET and POST
+	1.import the httpClientModule in the app.module.ts.
+	2.import the httpCLient in the component
+	3.create the object for the httpCLient in the component	
+		constructor(private http:HttpClient){}
+	4.using the obejct impleemnt the get or post api inteagration.

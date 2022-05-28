@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script>
+          class Person{
+              //variable creation in javascript
+              name =  "test";
+              age = 45;
+              //need to mention the constructor
+              constructor(name,age){
+                this.name  = name;
+                this.age = age;
+                console.log(this.name,name);
+              }
+              //method creation in javascript
+              printName(){
+                  console.log("this is the print name ",this.name);//need to use `this` to access the variable
+                  console.log("this is the age ",this.age);//need to use `this` to access the variable
+              }
+
+          }
+          person = new Person("to construc",78);
+        </script>
+    </head>
+<body>
+    <input type="button" onclick="person.printName()" value="Click to print Name">
+</body>
+
+</html>
