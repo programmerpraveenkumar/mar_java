@@ -75,3 +75,25 @@ http api integration
 	3.create the object for the httpCLient in the component	
 		constructor(private http:HttpClient){}
 	4.using the obejct impleemnt the get or post api inteagration.
+
+
+services:
+	this services does not have UI intercation.
+	common business logic can be implemented in the service class.
+	this service can be access across the app.
+	ng g s serivcename
+
+pipes:
+	text transformation.it denotes by | sybmol
+	uppercase,currency,date
+	ng g p square -> create the pipe in the app
+
+
+
+data sharing between components:
+	parent component to chlid component
+		1.create a shared variable in child component
+		2.add the decarator @Input() for this variable.
+		3.add the variable in childcomponent tag wch is in the parent component html.
+	child component to parent component
+	publish and subscribe

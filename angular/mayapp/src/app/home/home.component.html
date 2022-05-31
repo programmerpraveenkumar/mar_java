@@ -1,14 +1,14 @@
-<app-header></app-header>
+<app-header fromParent="this is from the home component"></app-header>
 
 <!-- binding the variable from ts -->
-<h1>{{pageName}}</h1>
+<h1>{{pageName | uppercase}}</h1>
 <h1>This is home componeotn html</h1>
 
 <h1>{{message}}</h1>
 <input type="text" [(ngModel)]="message" placeholder="PLease Enter Message">
 <h1>{{age}}</h1>
 <input type="text" [(ngModel)]="age" placeholder="PLease Enter the Age">
-
+<h2>{{currency |  currency :' Rs'}}</h2>
 <div>
     <h1>Login form</h1>
     <div>
@@ -21,7 +21,10 @@
         <input type="button" (click)="validate()"  value="Click to validate">
     </div>
 </div>
-
+<h1>{{currentDate | date:'fullDate'}}</h1>
+<h2>{{num | square}}</h2>
+<h2>{{num2 | square}}</h2>
+<h2>{{num3 | square}}</h2>
 
 <!--
     ngIf
@@ -39,6 +42,12 @@
 </div>
 <div *ngFor="let city of cityName">
     <h1 *ngIf="city.peopleCount <500">{{city.name}} and his peopleCount is {{city.peopleCount}}</h1>
+
+</div>
+
+<input type="text" [(ngModel)]="searchTxt" placeholder="Please Enter to Search">
+<div *ngFor="let key of personDetail | arrayfilter:searchTxt">
+    <h1>{{key.name}} and his age is {{key.age}}</h1>
 
 </div>
 
@@ -74,4 +83,11 @@
     <button (click)="createUser()">create User</button>
 
 
+ </div>
+
+ <button (click)="callServiceMethod()">Click to Call Service Method</button>
+
+ <input type="button" value="Call Server api method" (click)="showLoaderApi()">
+ <div *ngIf="isLoaderShown" class="loader_text">    
+     <img src="" alt="">
  </div>

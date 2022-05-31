@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CommonService } from '../common.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,11 +15,17 @@ export class HomeComponent implements OnInit {
   password = "";
   hideOrShow = true;//
   cssClassName = "red";
+  num = 2;
+  num2 = 4;
+  num3 = 6;
   jobname = "";
+  currency = 100;
   person = {name:"samplename","age":"45","email":"sample email@gmail.com"};
   userResponse = [];
+  currentDate = new Date()
+  isLoaderShown = false;
   //creaet obj for httpclient  using constructor
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private common:CommonService) { }
   
 
   personDetail = [
@@ -59,6 +66,9 @@ export class HomeComponent implements OnInit {
   changeCssClassname(className:any){
     this.cssClassName = className;
   }
+  callServiceMethod(){
+    this.common.printMessage();//calling srevice method using object.
+  }
 
   loadUser(){
     this.http.get("https://reqres.in/api/users?page=2").subscribe(
@@ -70,23 +80,32 @@ export class HomeComponent implements OnInit {
   }
   createUser(){
     if(this.username == ""){
-      alert("UserName is empty");
+      this.common.showAlert("UserName is empty");//common alert from the service class.
       return;
     }
     if(this.jobname == ""){
-      alert("jobName is empty");
+      this.common.showAlert("jobName is empty");//common alert from the service class.
       return;
     }
     let req = {
         "name": this.username,
         "job": this.jobname
     }
-    this.http.post("https://reqres.in/api/users",req).subscribe(
-      (res:any)=>{       
+    //this.http.post().subscribe(
+      this.common.postApi("https://reqres.in/api/users",req).subscribe( (res:any)=>{       
         console.log(res);
         this.username = "";//clear the variable and textbox
         this.jobname = "";//clear the variable and textbox
       }
     )
+  }
+  showLoaderApi(){
+    //this.isLoaderShown= true;
+    //https://reqres.in/api/users?delay=3
+    
+    this.common.getApi("https://reqres.in/api/users?delay=3").subscribe(res=>{
+      console.log(res);
+      //this.isLoaderShown = false;
+    })
   }
 }

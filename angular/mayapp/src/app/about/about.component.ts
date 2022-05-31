@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../common.service';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor( private common:CommonService) { }
 
   ngOnInit() {
   }
-
+  callServiceMethod(){
+    this.common.printMessage();//calling srevice method using object.
+    this.common.showAlert("common alert message");
+  }
 }

@@ -9,7 +9,9 @@ import { AboutComponent } from './about/about.component';
 import { HeaderComponent } from './header/header.component';
 
 import { FormsModule } from '@angular/forms';//two way data binding.
-import { HttpClientModule } from '@angular/common/http';//http api integration.
+import { HttpClientModule } from '@angular/common/http';
+import { SquarePipe } from './square.pipe';
+import { ArrayfilterPipe } from './arrayfilter.pipe';//http api integration.
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { HttpClientModule } from '@angular/common/http';//http api integration.
     HomeComponent,
     ContactComponent,
     AboutComponent,
-    HeaderComponent
+    HeaderComponent,
+    SquarePipe,
+    ArrayfilterPipe
   ],
   imports: [
     BrowserModule,
