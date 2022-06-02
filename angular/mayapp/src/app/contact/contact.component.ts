@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
+  fromchild = "";
   constructor() { }
 
   ngOnInit() {
   }
-
+  recvFromChild(data){
+    console.log(data);//this is from child component.
+    this.fromchild = data;
+  }
 }

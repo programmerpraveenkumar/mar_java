@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CommonService } from '../common.service';
+
 
 @Component({
   selector: 'app-header',
@@ -9,9 +11,19 @@ export class HeaderComponent implements OnInit {
 
   //recv the value from the parent
   @Input() fromParent = "";
-  constructor() { }
+  @Input() menuname = ""
+  @Output() toParent = new EventEmitter();//import from angular core
+  constructor(private common:CommonService) {
+    this.common.publishMessage.subscribe(res=>{
+      console.log(res);//from the publisher
+    })
+   }
 
   ngOnInit() {
+  }
+
+  clickToSendParent(){
+    this.toParent.emit("sample message to parent");
   }
 
 }

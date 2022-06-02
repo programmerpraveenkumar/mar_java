@@ -11,7 +11,8 @@ import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';//two way data binding.
 import { HttpClientModule } from '@angular/common/http';
 import { SquarePipe } from './square.pipe';
-import { ArrayfilterPipe } from './arrayfilter.pipe';//http api integration.
+import { ArrayfilterPipe } from './arrayfilter.pipe';
+import { FooterComponent } from './footer/footer.component';//http api integration.
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ArrayfilterPipe } from './arrayfilter.pipe';//http api integration.
     AboutComponent,
     HeaderComponent,
     SquarePipe,
-    ArrayfilterPipe
+    ArrayfilterPipe,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

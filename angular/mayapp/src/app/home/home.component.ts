@@ -7,7 +7,7 @@ import { CommonService } from '../common.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  searchTxt = "";
   pageName = "value is updated";
   message = "";
   age = "";

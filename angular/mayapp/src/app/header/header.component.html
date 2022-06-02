@@ -1,8 +1,11 @@
 <ul>
 
-  <li><a href="home">Home</a></li>
-  <li><a href="about">About</a></li>
-  <li><a href="contact">Contact update</a></li>
+  <li [ngClass]="{'active':menuname=='home'}" ><a href="home">Home</a></li>
+  <li [ngClass]="{'active':menuname=='about'}"><a href="about">About</a></li>
+  <li [ngClass]="{'active':menuname=='contact'}"><a href="contact">Contact</a></li>
 </ul>
 
+<input type="button" (click)="clickToSendParent()" value="Click to send">
+
+{{menuname}}
 {{fromParent}}

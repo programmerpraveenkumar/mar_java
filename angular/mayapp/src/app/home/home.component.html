@@ -1,4 +1,4 @@
-<app-header fromParent="this is from the home component"></app-header>
+<app-header menuname="home"  fromParent="this is from the home component"></app-header>
 
 <!-- binding the variable from ts -->
 <h1>{{pageName | uppercase}}</h1>
@@ -91,3 +91,5 @@
  <div *ngIf="isLoaderShown" class="loader_text">    
      <img src="" alt="">
  </div>
+
+ <app-footer></app-footer>

@@ -96,4 +96,9 @@ data sharing between components:
 		2.add the decarator @Input() for this variable.
 		3.add the variable in childcomponent tag wch is in the parent component html.
 	child component to parent component
+		1.create a shared variable in child component(header to parent)
+		2.add the decarator @Output() for this variable.it should be EventEmitter().
+		3.add the variable in childcomponent tag wch is in the parent component html.
+
 	publish and subscribe
+		footer->header,about

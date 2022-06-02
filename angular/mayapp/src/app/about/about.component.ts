@@ -8,7 +8,11 @@ import { CommonService } from '../common.service';
 })
 export class AboutComponent implements OnInit {
 
-  constructor( private common:CommonService) { }
+  constructor( private common:CommonService) { 
+    this.common.publishMessage.subscribe(res=>{
+      console.log(res);
+    })
+  }
 
   ngOnInit() {
   }
