@@ -1,12 +1,35 @@
 <app-header currentPage="home"></app-header>
-<div>
-  <input type="text" [(ngModel)]="email" placeholder="Enter Email"/>
+<div class="login-register-wrapper">
+
+
+<div class="login-register login-wrapper">
+  <h2>Login</h2>
+  <div>
+    <input type="text" [(ngModel)]="email" placeholder="Enter Email"/>
+  </div>
+  <div>
+    <input type="text" [(ngModel)]="password" placeholder="Enter Password"/>
+  </div>
+  <div>
+    <input type="button" (click)="login()" value="Login">
+  </div>
 </div>
-<div>
-  <input type="text" [(ngModel)]="password" placeholder="Enter Password"/>
+<div  class="login-register register-wrapper">
+  <h2>Register</h2>
+  <div>
+    <input type="text" [(ngModel)]="email" placeholder="Enter Email"/>
+  </div>
+  <div>
+    <input type="text" [(ngModel)]="password" placeholder="Enter Password"/>
+  </div>
+  <div>
+    <input type="text" [(ngModel)]="password" placeholder="Enter Re-Password"/>
+  </div>
+  <div>
+    <input type="button" (click)="login()" value="Login">
+  </div>
 </div>
-<div>
-  <input type="button" (click)="login()" value="Login">
 </div>
+
 <h1>{{userResponse}}</h1>
 <app-footer></app-footer>
