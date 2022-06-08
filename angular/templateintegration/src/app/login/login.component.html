@@ -13,21 +13,29 @@
   <div>
     <input type="button" (click)="login()" value="Login">
   </div>
+  <div>
+    <span>Forget Password</span>
+  </div>
 </div>
+
 <div  class="login-register register-wrapper">
   <h2>Register</h2>
   <div>
-    <input type="text" [(ngModel)]="email" placeholder="Enter Email"/>
+    
+
+
+    <input type="text" [(ngModel)]="register_email" placeholder="Enter Email"/>
   </div>
   <div>
-    <input type="text" [(ngModel)]="password" placeholder="Enter Password"/>
+    <input type="text" [(ngModel)]="register_password" placeholder="Enter Password"/>
   </div>
   <div>
-    <input type="text" [(ngModel)]="password" placeholder="Enter Re-Password"/>
+    <input type="text" [(ngModel)]="register_re_password" placeholder="Enter Re-Password"/>
   </div>
   <div>
-    <input type="button" (click)="login()" value="Login">
+    <input type="button" (click)="login()" value="Register">
   </div>
+  
 </div>
 </div>
 

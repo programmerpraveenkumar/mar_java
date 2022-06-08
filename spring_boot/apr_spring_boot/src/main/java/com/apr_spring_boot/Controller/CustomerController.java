@@ -1,6 +1,7 @@
 package com.apr_spring_boot.Controller;
 
 import com.apr_spring_boot.Request.CustomerReq;
+import com.apr_spring_boot.Request.PasswordUpdate;
 import com.apr_spring_boot.Response.SampleRes;
 import com.apr_spring_boot.Service.CustomerService;
 
@@ -112,9 +113,9 @@ public class CustomerController {
 
     }
     @PostMapping("passwordUpdate")
-    public ResponseEntity<?> passwordUpdate(@RequestBody CustomerReq req)throws Exception{
+    public ResponseEntity<?> passwordUpdate(@RequestBody PasswordUpdate req)throws Exception{
             SampleRes res = new SampleRes();
-            if(req.getPassword() == null ||req.getPassword().equals("")){
+            if(req.getNew_password() == null ||req.getOld_password().equals("")){
                 throw new Exception("Password should not be empty");
             }
             customerService.passwordUpdate(req);

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CustomerService } from '../customer.service';
 import {userType} from '../dataType'
 @Component({
   selector: 'app-product-details',
@@ -15,7 +16,7 @@ export class ProductDetailsComponent implements OnInit {
     last_name:'',
     avatar:''   
   };
-  constructor(private router:ActivatedRoute,private http:HttpClient) { 
+  constructor(private customer:CustomerService ,private router:ActivatedRoute,private http:HttpClient) { 
     this.router.paramMap.subscribe(res=>{
       console.log(res['params']);
       this.getUserDetailsById(res['params']['product_id']);
@@ -25,7 +26,7 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit() {
   }
 getUserDetailsById(userId){
-  this.http.get("https://reqres.in/api/users/"+userId).subscribe((res:userType)=>{
+  this.customer.getHttp("https://reqres.in/api/users/"+userId).subscribe((res:userType)=>{
     console.log(res);
     this.userDetail= res['data'];
   });

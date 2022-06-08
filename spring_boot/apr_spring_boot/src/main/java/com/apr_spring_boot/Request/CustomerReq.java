@@ -3,6 +3,7 @@ package com.apr_spring_boot.Request;
 public class CustomerReq {
     Integer customerId;
     String name;
+    String old_password;
 
     public String getId() {
         return id;

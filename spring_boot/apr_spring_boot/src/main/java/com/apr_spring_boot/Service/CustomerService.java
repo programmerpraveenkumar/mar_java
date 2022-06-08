@@ -7,6 +7,7 @@ import com.apr_spring_boot.Model.MongoDb.UserModelMongo;
 import com.apr_spring_boot.Repo.CustomerRepo;
 import com.apr_spring_boot.Repo.UserModelMongoRepo;
 import com.apr_spring_boot.Request.CustomerReq;
+import com.apr_spring_boot.Request.PasswordUpdate;
 import com.apr_spring_boot.Response.CustomerResponse;
 
 import io.jsonwebtoken.Claims;
@@ -145,7 +146,7 @@ public class CustomerService {
 
             long nowMillis = System.currentTimeMillis();
             Date now = new Date(nowMillis);
-            long ttlMillis = 60*60*1000;//1hour token
+            long ttlMillis = 10*60*60*1000;//10 days  token
            // long ttlMillis = 5*1000;//5secs token
             long expMillis = nowMillis + ttlMillis;
             Date exp = new Date(expMillis);
@@ -199,13 +200,17 @@ public class CustomerService {
     }
 
 
-    public boolean passwordUpdate(CustomerReq req)throws  Exception{
+    public boolean passwordUpdate(PasswordUpdate req)throws  Exception{
         //email and password from customer table.
         Optional<CustomerModel> customerOpt = customerRepo.findById(req.getCustomerId());//get the customer by id;
         if(customerOpt.isPresent()){
-           CustomerModel customerModel = customerOpt.get();//only if data is exist.
-            customerModel.setPassword(req.getPassword());//assign the password to modelclass.
-            customerRepo.save(customerModel);//update the data.
+            CustomerModel customerModel = customerOpt.get();//only if data is exist.
+            if(customerModel.getPassword().equals(req.getOld_password())){
+                customerModel.setPassword(req.getNew_password());//assign the password to modelclass.
+                customerRepo.save(customerModel);//update the data.
+            }else{
+                throw new Exception("Old-password is not same");
+            }
             return true;
         }else{
             throw new Exception("User is not exist");

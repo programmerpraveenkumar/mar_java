@@ -1,0 +1,58 @@
+<app-header currentPage="products"></app-header>
+<div class="product">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-6">
+             <div class="titlepage">
+                <h2>User Settings</h2>
+                
+             </div>
+          </div>
+       </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+         <div class="col-6 padding_left0">
+            <div class="product_box">
+                    <h3>Password update</h3>
+                    <div class="input-update-wrapper">
+                      <div>
+                        <input class="input" type="text" [(ngModel)]="old_password" placeholder="Enter Old Password">
+                      </div>
+                      <div>
+                        <input class="input"  type="text" [(ngModel)]="new_password" placeholder="Enter New Password">
+                      </div>
+                      <div>
+                        <input class="input"  type="text" [(ngModel)]="re_password"  placeholder="Enter Re-Password">
+                      </div>
+                      <div class="input-btn-wrapper">
+                        <input class="input-btn" (click)="passwordupdate()" type="button" value="Click to update" >
+                      </div>
+                    </div>
+                 
+            </div>
+         </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-6 padding_left0">
+           <div class="product_box">
+                   <h3>Profile Image update</h3>
+                   <div class="input-update-wrapper">
+                     <div>
+                       <input class="input file-input"  type="file" >
+                     </div>
+                     <div class="input-btn-wrapper">
+                      <input class="input-btn"  type="button" value="Click to update" >
+                    </div>
+                   </div>
+                
+           </div>
+        </div>
+       
+     </div>
+   </div>
+
+  
+ </div>
+<app-footer></app-footer>

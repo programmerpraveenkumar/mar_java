@@ -1,6 +1,8 @@
 package com.apr_spring_boot.configuration;
 
 import com.apr_spring_boot.Service.CustomerService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -24,6 +26,7 @@ public class TokenInterceptor implements HandlerInterceptor {
 
     @Autowired
     CustomerService customerService;
+    private static final Logger logger = LogManager.getLogger(TokenInterceptor.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -37,21 +40,25 @@ public class TokenInterceptor implements HandlerInterceptor {
             try{
                 String token = request.getHeader("token");//need to pass from the api request.
                 String user_id = request.getHeader("user_id");//need to pass from the api request.
-//                if(token == null || token.equals("")){
-//                    return true;
-//                    //throw new Exception("token is empty");
-//
-//                }
-//                if(user_id == null || user_id.equals("")){
-//                    throw new Exception("token is empty");
-//                }
-//                if(customerService.tokenValidation(user_id,token)){
-//                    return true;
-//                }else{
-//                    throw new Exception("token Error");
-//                }
-                return true;
+                System.out.println("toekn "+token);
+                System.out.println("user_id "+user_id);
+
+                if(token == null || token.equals("")){
+                   return true;
+                    //throw new Exception("token is empty");
+
+                }
+                if(user_id == null || user_id.equals("")){
+                    throw new Exception("token is empty");
+                }
+                if(customerService.tokenValidation(user_id,token)){
+                    return true;
+                }else{
+                    throw new Exception("token Error");
+                }
+                //return true;
             }catch (Exception e){
+                logger.error(e);
 //                e.printStackTrace();
 //                response.setStatus(400);//error status code
 //                response.getWriter().append("token error "+e.getMessage());//

@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductsComponent } from './products/products.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   {path:'home',component:HomeComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:'contact',component:ContactComponent},
   {path:'products',component:ProductsComponent},
   {path:'login',component:LoginComponent},
+  {path:'settings',component:SettingsComponent},  
   {path:'product-detail/:product_id',component:ProductDetailsComponent}
   //product-details/12
   //product-details/13

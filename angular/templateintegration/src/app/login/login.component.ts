@@ -12,6 +12,9 @@ import { CustomerService } from '../customer.service';
 export class LoginComponent implements OnInit {
   email:"";
   password:"";
+  register_email:"";
+  register_password:"";
+  register_re_password:"";
   userResponse = "";
   constructor(private http:HttpClient,private customerService:CustomerService,private router:Router) { }
 
@@ -26,8 +29,8 @@ export class LoginComponent implements OnInit {
       email:this.email,
       password:this.password
     }
-    
-    this.http.post("http://localhost:8080/customer/login",req).subscribe((res:any)=>{
+    //below method coming from the service.
+    this.customerService.postHttpWithoutToken("customer/login",req).subscribe((res:any)=>{
       console.log(res);
      this.customerService.storeCustomerStorage(res);
       this.userResponse = "you are correct";

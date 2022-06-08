@@ -13,6 +13,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import {HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     ContactComponent,
     ProductsComponent,
     ProductDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

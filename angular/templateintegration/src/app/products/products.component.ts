@@ -22,7 +22,7 @@ export class ProductsComponent implements OnInit {
     if(!this.customerService.checkToken()){
       this.errormessage = "Please Login ";
     }else{
-      this.getUsers();//method will be triggerd while loading of the page and logged-in users.
+      //this.getUsers();//method will be triggerd while loading of the page and logged-in users.
       this.productArray = [
         {name:'product1.jpg',"product_name":"Vegatable","id":1},
         {name:'product2.jpg',"product_name":"Wheat","id":2},
@@ -32,7 +32,7 @@ export class ProductsComponent implements OnInit {
     ];
     }
     
-    //this.getCustomers();//calling spring boot
+    this.getCustomers();//calling spring boot
   }
 
   ngOnInit() {
@@ -46,7 +46,7 @@ export class ProductsComponent implements OnInit {
   }
 
   getCustomers(){   
-    this.http.get("http://localhost:8080/customer/getCustomer").subscribe(res=>{
+    this.customerService.getHttp("customer/getCustomer").subscribe(res=>{
       console.log(res);
     })
   }
